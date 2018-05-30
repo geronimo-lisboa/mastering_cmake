@@ -1,0 +1,7 @@
+#Esse cmake pega alguns arquivos e o usa para gerar um projeto com um target, que é o executável
+#main.
+cmake_minimum_required(VERSION 2.8)
+project( HelloCmake ) #Define o nome do projeto. Um projeto pode ter vários targets
+set(fileList "foo.h" "foo.cpp" "main.cpp") #define uma lista com os nomes dos arquivos
+add_executable(main ${fileList}) #o executavel main usará os arquivos em fileList
+

@@ -1,0 +1,17 @@
+#Esse exemplo é meio idiota mas ilustra como usar variáveis de cache.
+#Variáveis de cache persistem entre as execuções do cmake e só morrem quando o cache é limpo
+#pelo usuário.
+#Com elas eu também consigo por opções na tela do cmake-gui.
+#Nesse exemplo criei uma variável de cache chamada CHOSEN_FILES, que aparece no cmake-gui
+#com a label de "diz os arquivos aí". Eu posso passar uma lista de arquivos para ela (separada por ;)
+#quando eu clicar de novo em "Configure" essa lista será autualizada pelos valores entrados no cmake-gui
+#e seu conteúdo será usado no loop e pra criar o projeto. Os arquivos informados estarão lá no projeto.
+cmake_minimum_required(VERSION 2.8)
+project( opcoes ) 
+set(CHOSEN_FILES "main.cpp" CACHE FILEPATH "diz os arquivos aí")
+#percorre a lista definida em fileList e imprime o conteúdo
+foreach(item ${CHOSEN_FILES})
+	message(${item})
+endforeach()
+add_executable(main ${CHOSEN_FILES}) 
+
